@@ -74,17 +74,28 @@ class VagaController extends Controller
      */
     public function update(Request $request, Vaga $vaga)
     {
-        $storeData = $request->validate(
-            [
-                'titulo' => 'required|max:255',
-                'descricao' => 'required|min:3',
-                'status' => 'required',
-            ]
-        );
-
-        $vaga->update($storeData); //Método Herdado
-
-        return redirect('/vaga')->with('success','Vaga Editada com Sucesso');
+        {
+            $request->validate([
+                'name' => 'required',
+                'detail' => 'required'
+            ]);
+      
+            $input = $request->all();
+      
+            if ($image = $request->file('image')) {
+                $destinationPath = 'images/';
+                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['image'] = "$profileImage";
+            }else{
+                unset($input['image']);
+            }
+              
+            $product->update($input);
+        
+            return redirect()->route('products.index')
+                            ->with('success','Product updated successfully');
+        }
     }
 
     /**
