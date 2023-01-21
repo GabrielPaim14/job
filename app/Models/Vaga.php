@@ -13,6 +13,6 @@ class Vaga extends Model
         'titulo',
         'descricao',
         'status',
-        'image',
+        'arquivo',
     ];
 }

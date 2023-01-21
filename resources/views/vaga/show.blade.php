@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-@extends('layout')
+@extends('dashboard')
 
 @section('content')
         <div class="row">

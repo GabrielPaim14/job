@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-@extends('layout')
+@extends('dashboard')
 
 @section('content')
 
@@ -26,7 +26,7 @@
             </div>
         @endif
 
-        <form action="{{ route('vaga.update', $vaga->id) }}" method="POST">
+        <form action="{{ route('vaga.update', $vaga->id) }}" method="POST" enctype="multipart/form-data">
             @csrf 
             @method("PUT")
             <div class="row">
@@ -53,6 +53,14 @@
                         <input type="text" id="campo-status" name="status"
                         class="form-control" placeholder="Status"
                         value="{{ $vaga->status }}">
+                        </div>
+                </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>arquivo:</strong>
+                            <input type="file" name="arquivo" class="form-control" placeholder="arquivo">
+                            <a href="/arquivo/{{ $vaga->arquivo }}" width="300px">{{ $vaga->arquivo }}</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

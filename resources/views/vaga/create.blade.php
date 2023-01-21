@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-@extends('layout')
+@extends('dashboard')
 
 @section('content')
         <div class="row">
             <div class="col-lg-12 margin-tb">
                     <div clas="pull-left">
-                        <h2>Adicione uma nova vaga</h2>
+                        <h2>Criar Vaga</h2>
                     </div>
                     <div class="pull=right">
                         <a class="btn btn-primary"
@@ -24,7 +24,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('vaga.store') }}" method="POST">
+        <form action="{{ route('vaga.store') }}" method="POST" enctype="multipart/form-data">
             @csrf 
 
             <div class="row">
@@ -53,6 +53,12 @@
                         
                     </div>
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Arquivo:</strong>
+                <input type="file" name="arquivo" class="form-control" placeholder="arquivo">
+            </div>
+        </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" class="btn btn-primary">
                         Salvar</button>

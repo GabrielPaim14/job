@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-@extends('layout')
+@extends('dashboard')
 
 @section('content')
     <table class="table table-bordered">
@@ -42,8 +42,8 @@
             </tr>
         @endforeach
     </table>
-
-        <a
+        
+    <a
             clss="btn btn-info"
             href="{{ route('vaga.create', $vaga->id) }}"
             >Adicionar nova vaga</a>
